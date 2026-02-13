@@ -1,9 +1,13 @@
 package com.sarya.springai.config;
 
 
+import com.sarya.springai.advisors.TokenUsageAuditAdvisor;
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.List;
 
 @Configuration
 public class ChatClientConfig {
@@ -11,6 +15,7 @@ public class ChatClientConfig {
     @Bean
     public ChatClient chatClient(ChatClient.Builder chatClientBuilder) {
         return chatClientBuilder
+                .defaultAdvisors(List.of(new SimpleLoggerAdvisor(), new TokenUsageAuditAdvisor()))
                 .defaultSystem("""
                          You are an internal IT helpdesk assistant. Your role is to assist\s
                                                        employees with IT-related issues such as resetting passwords,\s
