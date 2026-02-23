@@ -16,11 +16,13 @@ public class ChatClientConfig {
 
     @Bean
     public ChatClient chatClient(ChatClient.Builder chatClientBuilder) {
-       ChatOptions chatOptions =  ChatOptions.builder().model(String.valueOf(OpenAiApi.ChatModel.GPT_4_1_MINI))
-                .temperature(0.8).build();
+//       ChatOptions chatOptions =  ChatOptions.builder().model(String.valueOf(OpenAiApi.ChatModel.GPT_4_1_MINI))
+//                .temperature(0.8).build();
+//
+
 
         return chatClientBuilder
-                .defaultOptions(chatOptions)
+//                .defaultOptions(chatOptions)
                 .defaultAdvisors(List.of(new SimpleLoggerAdvisor(), new TokenUsageAuditAdvisor()))
                 .defaultSystem("""
                          You are an internal IT helpdesk assistant. Your role is to assist\s
